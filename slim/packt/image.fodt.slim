@@ -5,8 +5,8 @@ text:p text:style-name="imageblock"
         - Encoding.default_external = 'UTF-8' # Make sure the default encoding is not surpising
 		- Encoding.default_internal = 'UTF-8' # Make sure the default encoding is not surpising
 		- require 'base64'
-		- image_contents = IO.read((attr :target), :encoding => 'UTF-8')
-        - enc = Base64.encode64(image_contents)
+		- image_contents = IO.read((attr :target), :encoding => 'UTF-8:UTF-8') # TODO improve by detecting the encoding rather than forcing it
+        - enc = Base64.strict_encode64(image_contents)
         =enc
 text:p text:style-name="Layout_20_Information_20_5b_PACKT_5d_"
   - require 'pathname'
