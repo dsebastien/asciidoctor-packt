@@ -16,9 +16,12 @@ If you'll notice, all lines of that bullet list are tagged **Bullet [PACKT]**, e
 [verse, Greg L. Turnquist]
 After writing gobs of documents over the past year with AsciiDoc, I was strongly motivated to make that work as I embark on writing Learning Spring Boot.
 
-. First, grab this project with `git clone git@github.com:gregturn/asciidoc-packt.git`
-. Second, install http://asciidoctor.org
-. Third, run this book and see what happens!
+. Grab this project with `git clone git@github.com:gregturn/asciidoc-packt.git`
+. Install http://asciidoctor.org with gem install asciidoctor
+. Install a few gems: gem install thread_safe tilt
+. Install one more just for fun: gem install slim --version 2.1.0
+. Install xmllint (http://www.zlatkovic.com/libxml.en.html). Binaries for Windows: ftp://ftp.zlatkovic.com/libxml/ 
+. Run ./build.sh and check out the results in the dist folder!
 
 If you'll notice, all lines of that numbered list are tagged **Numbered Bullet [PACKT]**, except the last. It's tagged **Numbered Bullet End [PACKT]**.
 
