@@ -7,7 +7,7 @@ text:p text:style-name="imageblock"
 		- require 'base64'
 		- image_encoding = File.read((attr :target)).encoding.name
 		- image_contents = IO.read((attr :target), :encoding => "#{image_encoding}:#{image_encoding}")
-        - enc = Base64.strict_encode64(image_contents)
+        - enc = Base64.encode64(image_contents) # encode in compliance with RFC 2045
         =enc
 text:p text:style-name="Layout_20_Information_20_5b_PACKT_5d_"
   - require 'pathname'
