@@ -1,0 +1,25 @@
+include::variables.adoc[]
+
+== TODO chapter number
+
+=== TODO chapter name
+
+TODO describe chapter
+
+In this chapter we will cover the following topics:
+
+* TODO 1
+* TODO 2
+* TODO 3
+
+==== TODO section
+
+TODO
+
+==== Summary
+
+In this chapter...
+TODO
+
+In the next chapter, we'll see ...
+TODO

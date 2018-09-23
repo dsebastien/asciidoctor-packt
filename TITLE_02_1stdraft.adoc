@@ -1,2 +1,3 @@
+include::variables.adoc[]
 
 ... copy the template for chapter 1 into here and customize...

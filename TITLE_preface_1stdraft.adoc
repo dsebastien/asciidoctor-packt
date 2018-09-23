@@ -1,13 +1,10 @@
+include::variables.adoc[]
+
 == DELETE ME
 
 === Preface
 
-[verse, Graham Rivers-Brown, https://twitter.com/grahamrb/status/500422704499945472]
-Very impressed with blah blah blah!
-
-Something cool by Greg Turnquist....
-
-I hope you enjoy this experience.
+TODO
 
 ==== What this book covers
 

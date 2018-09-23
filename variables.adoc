@@ -1,0 +1,3 @@
+:assets: ./assets
+:book_title: My Awesome Book Title
+:me: My Name Goes Here

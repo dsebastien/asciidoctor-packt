@@ -1,14 +1,14 @@
-= My Book Title Goes Here
-:author: My Name Goes Here
+include::variables.adoc[]
+
+= {book_title}
+:author: {me}
 :toc: right
 :toclevels: 6
 :doctype: book
 
 image::https://i.pinimg.com/originals/c2/40/fb/c240fb91e8e6ddabc4927d81edb74eaa.png[]
 
-_My Book Title_ is aimed at...
-
-TIP: Please enjoy my https://github.com/gregturn/packt-book-template[awesome blogging] as I write this book!
+_{book_title}_ is aimed at...
 
 (C) YYYY Packt Publishing Ltd., All Rights Reserved
 

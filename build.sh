@@ -46,7 +46,7 @@ build() {
 		for i in $(ls fragment*); do
 			PROCESSED="processed_$i"
 			echo "Converting $i into $PROCESSED"
-			# TODO: Plug in any script you want to "trim" 
+			# TODO: Plug in any script you want to "trim"
 			# my_script_to_convert < $i > $PROCESSED
 		done
 	fi;

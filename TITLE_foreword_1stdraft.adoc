@@ -1,3 +1,5 @@
+include::variables.adoc[]
+
 == DELETE ME
 
 === Foreword
