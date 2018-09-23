@@ -1,72 +1,11 @@
-== 43
+== Examples
 === Writing for Packt with Asciidoctor
 
 In this chapter, you'll learn:
-
-* How to create a Packt manuscript using `asciidoctor` (http://asciidoctor.org)
-* How to write your text calmly, and let the tools do the layouts for you.
-* How to embed images, source code, and create bullets, notes, etc.
-* Über easy ways to write your next book (and even use ü's!)
-
-If you'll notice, all lines of that bullet list are tagged **Bullet [PACKT]**, except the last. It's tagged
-**Bullet End [PACKT]**.
-
-==== Getting started
-
-[verse, Greg L. Turnquist]
-After writing gobs of documents over the past year with AsciiDoc, I was strongly motivated to make that work as I embark on writing Learning Spring Boot.
-
-. Grab this project with `git clone git@github.com:gregturn/asciidoc-packt.git`
-. Install http://asciidoctor.org with gem install asciidoctor
-. Install a few gems: gem install thread_safe tilt
-. Install one more just for fun: gem install slim --version 2.1.0
-. Install xmllint (http://www.zlatkovic.com/libxml.en.html). Binaries for Windows: ftp://ftp.zlatkovic.com/libxml/ 
-. Run ./build.sh and check out the results in the dist folder!
-
-If you'll notice, all lines of that numbered list are tagged **Numbered Bullet [PACKT]**, except the last. It's tagged **Numbered Bullet End [PACKT]**.
-
-To run things, you just need a handy dandy script:
-
-----
-$ asciidoctor -T slim -b packt README.adoc && xmllint -format README.fodt
-----
-
-The output will be compacted XML (FODT), so it will be **hard** to read. That why running it through
-`xmllint` is handy.
-
-NOTE: You have to ensure `xmllint` is installed. It's not part of this project.
-
-You should see a nice output: `README.fodt`.
-
-----
-$ ls -ltr
-total 616
--rw-r--r--@  1 gturnquist  staff   22836 May 30 08:27 packt_template.ott
--rw-r--r--   1 gturnquist  staff  145233 May 30 08:28 packt_template.fodt
-drwxr-xr-x   4 gturnquist  staff     136 Jun 18 18:01 slim/
-drwxr-xr-x   4 gturnquist  staff     136 Jun 18 20:36 samples/
-drwxr-xr-x  11 gturnquist  staff     374 Jun 18 20:36 asciidoc/
--rw-r--r--@  1 gturnquist  staff    6332 Jun 19 08:42 README.adoc
--rw-r--r--   1 gturnquist  staff  131532 Jun 19 08:45 README.fodt
-----
-
-From here, you can start writing your own manuscript for Packt. The core content will be towards the end, inside the `<office:body>` tag. Everything
-before hand are Packt's styles embedded so LibreOffice will make everything look nice. 
-
-Does your manuscript live elsewhere, and NOT in the same folder as this project? No problem!
-
-----
-$ asciidoctor -T /path/to/your/clone/of/asciidoc-packt/slim -b packt your.adoc 
-----
-
-You should now see a nice output.
-
-IMPORTANT: In order to open FODT files on Fedora, you must have the **libreoffice-xsltfilter** package installed.
-
-Cheers!
-
-WARNING: I have used this process to successfully publish http://greglturnquist.com/learning-spring-boot[Learning
-Spring Boot]. I ran into a few hiccups, such as editors reporting they couldn't see images. I had no problem viewing embedded images, but I had Mac and they had Windows, so who knows? Nonetheless, there are no guarantees provided. If you take this on you assume ALL risk. You have been warned.
+. How to create a Packt manuscript using `asciidoctor` (http://asciidoctor.org)
+. How to write your text calmly, and let the tools do the layouts for you.
+. How to embed images, source code, and create bullets, notes, etc.
+. Über easy ways to write your next book (and even use ü's!)
 
 ==== Admonitions
 
@@ -197,7 +136,7 @@ following table.
 
 Images are embedded through base64 encoding. They are NOT linked to external files.
 
-image::samples/cat.jpg[width="65%" height="30%"]
+image::samples/cat.png[width="65%" height="30%"]
 
 The backend also embeds a Layout[Packt] tag afterwards with the basename of the file.
 
@@ -215,24 +154,3 @@ Well, there are actually a lot of other styles provided by Packt not handled her
 
 That is too much, and frankly, I don't much care for that stuff. Too detailed and really
 pulls me away from writing, so I don't support it.
-
-WARNING: All styles embedded in this backend are owned by Packt Publishing Ltd. (http://packtpub.com) and potentially subject to their
-copyright notices.
-
-==== Good to know stuff...
-
-* Don't embed :author: or :title: attributes at the top. They end up getting printed which fouls up the product you must ship to Packt.
-* Because asciidoc considers double-underscores indicators of emphasis, all styles names are edited to replace __ with _ to avoid clashing
-
-==== In case you didn't notice
-
-This README page is structured in the theme of Packt. It might not render perfectly on GitHub, but when viewed through a text editor, 
-and certainly when converted by this backend to LibreOffice, it should provide a nice example of writing a manuscript for Packt.
-
-Be advised, the nature of this doc is Packt-like, but don't assume it represents the proper formatting of a book. This is how to 
-style things. Formatting governs what sections you'll have in a chapter. When to use tips, quotes, etc. is strictly editorial and 
-YOUR responsibility.
-
-NOTHING is done to make it look good on GitHub, because that is not the target. BUT...why waste a keen opportunity to document both
-environments?
-
