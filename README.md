@@ -9,28 +9,52 @@ I've tried to regroup both in one as a starting point to work on my current book
 
 Some of my modifications:
 * put both projects together
-* modified the build script and extended it to generate the output in a "dist" folder
-* tried to improve the image loading in fodt files because I had problems with this on Windows
+* modified the build script
+  * extended it to generate the output in a "dist" folder
+  * added support for building a single file with the single_file option
+  * added support for cleaning and copying assets over to the dist folder
+* added a watch mode based on node, npm and BrowserSync, providing live reload
 * added a Gemfile and some info to ease the setup and config
 * added an AsciiDoctor file for variables, to be loaded in all chapters and avoid repetition
 * added a template for new chapters
+* tried to improve the image loading in fodt files because I had problems with this on Windows
 
 As with the original repositories:
 * there are no guarantees provided. If you take this on you assume ALL risk. You have been warned.
 * all the document styles embedded in this project are owned by Packt Publishing Ltd. (http://packtpub.com) and potentially subject to their
 copyright notices.
 
-## Installation and usage
+## Installation
 * Grab this project with `git clone https://github.com/dsebastien/asciidoctor-packt.git`
-* Install Ruby
+* Install [Ruby](https://www.ruby-lang.org)
 * Update your Ruby environment: `gem update --system && gem update *`
 * Install bundler with `gem install bundler` (https://bundler.io/)
 * Install the necessary Ruby dependencies with `gem bundle`
-* Install LiveReload in your browser of choice: http://livereload.com/extensions/
-* Install xmllint (http://www.zlatkovic.com/libxml.en.html). Binaries for Windows: ftp://ftp.zlatkovic.com/libxml/
-* Run ./build.sh and check out the results in the `dist` folder!
+* Install [Node.js](https://nodejs.org/en/) and npm (or Yarn if you fancy it better)
+* Run `npm install`
+* (optional) Install xmllint (http://www.zlatkovic.com/libxml.en.html). Binaries for Windows: ftp://ftp.zlatkovic.com/libxml/
+
+## Usage
+
+### Build
+Execute `npm run build` (or `build.sh all`) and check out the results in the `dist` folder!
 
 In the `dist` folder, you'll notice that you now have both html and fodt files. The fodt files are those that you can send to Packt. They're formatted using their styles.
+
+### Watch
+Execute `npm run serve` (or `npm run watch`) to start the build in watch mode.
+
+In this mode whenever you add or change an `.adoc` file
+* it'll be built using AsciiDoctor and the corresponding html output will be generated in the `dist` folder
+* the assets will be updated in the `dist folder`
+
+In addition, the watch mode will start an instance of [BrowserSync](https://browsersync.io/), which will:
+* serve the contents of the dist folder
+* open a browser windows
+* watch for changes in the `dist` folder and automatically refresh the browser tab when needed
+
+### Clean  
+Run `npm run clean` to remove the `dist` folder.
 
 ## Conventions
 Each AsciiDoctor file should respect this convention: ${TITLE}_${module}_${ROUND}.adoc
@@ -51,7 +75,7 @@ If you have fragments, you should put them in the assets folder, along with the 
 Edit `build.sh` and change the `ROUND`, then the correct files will be taken.
 
 ### Output folder
-If you want to use a different destination folder for the generated files, you need to adapt the `Guardfile` and `build.sh`.
+If you want to use a different destination folder for the generated files, you need to adapt `Guardfile`, `build.sh` and `config.js`.
 
 ### Book global variables
 Adapt the `variables.adoc` file
@@ -84,7 +108,4 @@ IMPORTANT: In order to open FODT files on Fedora, you must have the **libreoffic
 * fix images
   * position in FODT files. On my machine they don't appear next to the [[Insert image ...]] message 
   * images inlining is broken on Windows: Cannot read data. Most probably an encoding issue, but couldn't fix it so far
-* fix live reload support
-  * original approach in Guardfile doesn't work on Windows under MSYS. Guard-livereload doesn't like running there...
-    * one option: replace Guard by npm
-* modify the template to use 01, 02, ... as chapter names and adapt corresponding folder names and examples in the .adoc files.
+* modify the template to use 01, 02, ... as chapter names and adapt corresponding folder names and examples in the .adoc files

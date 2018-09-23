@@ -1,0 +1,31 @@
+{
+  "name": "asciidoctor-packt",
+  "version": "1.0.0",
+  "description": "Utility package to help authors of Packt books work with AsciiDoctor",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run clean && bash ./build.sh all",
+    "start": "npm run build",
+    "clean": "npx rimraf ./dist",
+    "watch": "node ./build.js",
+    "serve": "npm run watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dsebastien/asciidoctor-packt.git"
+  },
+  "keywords": [
+    "asciidoctor",
+    "packt"
+  ],
+  "author": "dSebastien <seb@dsebastien.net> (https://www.dsebastien.net)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dsebastien/asciidoctor-packt/issues"
+  },
+  "homepage": "https://github.com/dsebastien/asciidoctor-packt#readme",
+  "devDependencies": {
+    "browser-sync": "2.24.7",
+    "chokidar": "2.0.4"
+  }
+}

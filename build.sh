@@ -23,7 +23,7 @@ IFS=$OLD_IFS # restore IFS
 
 clean_assets() {
     echo "Cleaning the destination folder"
-    rm -rf $DESTINATION_DIR
+    rm -rf $DESTINATION_DIR/$ASSETS_DIR
 }
 
 copy_assets() {
@@ -71,6 +71,10 @@ build() {
 
 }
 
+buildHtmlOnly() {
+	asciidoctor --destination-dir ${DESTINATION_DIR} --trace --attribute allow-uri-read $1
+}
+
 #####################################################################
 # CLI
 #####################################################################
@@ -85,7 +89,6 @@ elif [ "$1" = "all" ]; then
 	echo
 	
 	clean_assets
-
 	build "foreword"
 	build "preface"
 
@@ -93,11 +96,9 @@ elif [ "$1" = "all" ]; then
 	do
 		build $module
 	done
-
+	
 	build "index"
-	
     copy_assets
-	
 	echo "Done!"
 
 	exit
@@ -105,6 +106,8 @@ elif [ "$1" = "clean_assets" ]; then
     clean_assets
 elif [ "$1" = "copy_assets" ]; then
     copy_assets
+elif [ "$1" = "single_file" ]; then
+	buildHtmlOnly $2
 elif containsElement "$1" "${MODULES[@]}"; then
 	echo
 	echo "$1 is a valid module name. Building..."
