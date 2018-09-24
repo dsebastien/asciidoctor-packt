@@ -64,7 +64,7 @@ function updateAssets() {
 
 // Run BrowserSync
 browserSync({
-    server: 'dist',
+    server: config.destinationDir,
     files: [`${config.destinationDir}/*.html`, `${config.destinationDir}/assets/**.*`],
 	directory: true
 });
