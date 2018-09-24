@@ -15,7 +15,7 @@ let asciiDoctorWatcher = chokidar.watch('*.adoc', {
 	//ignored: '^(?!TITLE).+', // we only care about files starting with TITLE
 	persistent: true,
 	ignoreInitial: false,
-	ignorePermissionErrors: false
+	ignorePermissionErrors: true
 });
 
 asciiDoctorWatcher
