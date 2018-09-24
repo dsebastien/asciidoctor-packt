@@ -18,6 +18,7 @@ Some of my modifications:
 * added an AsciiDoctor file for variables, to be loaded in all chapters and avoid repetition
 * added a template for new chapters
 * tried to improve the image loading in fodt files because I had problems with this on Windows
+* added inline footnotes support based on https://github.com/kubamarchwicki/asciidoctor-fodt
 
 As with the original repositories:
 * there are no guarantees provided. If you take this on you assume ALL risk. You have been warned.

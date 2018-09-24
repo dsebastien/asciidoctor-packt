@@ -1,0 +1,17 @@
+/ Reference: https://github.com/kubamarchwicki/asciidoctor-fodt
+- def footnote_id(index = (attr :index)) %(ftn#{index}) end
+- footnote = footnote_id (attr :index)
+- if type == :xref
+  - if attr :index
+    /TODO this one doesn't seem to work properly
+    text:note-ref text:note-class="footnote" text:reference-format="text" text:ref-name="#{footnote}" =(attr :index)
+- else
+  text:note xml:id="#{footnote}" text:note-class="footnote"
+    text:note-citation text:label="#{attr :index}" =(attr :index)
+    text:note-body
+      text:p text:style-name="footnote"
+        - if attr? :index
+          text:bookmark-start text:name="#{footnote}"
+        =text
+        - if attr? :index
+          text:bookmark-end text:name="#{footnote}"
