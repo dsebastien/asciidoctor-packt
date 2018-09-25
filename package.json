@@ -4,10 +4,14 @@
   "description": "Utility package to help authors of Packt books work with AsciiDoctor",
   "main": "index.js",
   "scripts": {
-    "build": "npm run clean && bash ./build.sh all",
+	"prebuild": "npm run clean",
+    "build": "bash ./build.sh all",
     "start": "npm run build",
     "clean": "npx rimraf ./dist",
-    "watch": "node ./build.js",
+    "clean-assets": "bash ./build.sh clean_assets",
+    "copy-assets": "bash ./build.sh copy_assets",
+	"prewatch": "npm run clean-assets && npm run copy-assets",
+    "watch": "nodemon ./build.js",
     "serve": "npm run watch"
   },
   "repository": {
@@ -26,6 +30,7 @@
   "homepage": "https://github.com/dsebastien/asciidoctor-packt#readme",
   "devDependencies": {
     "browser-sync": "2.24.7",
-    "chokidar": "2.0.4"
+    "chokidar": "2.0.4",
+    "nodemon": "1.18.4"
   }
 }
