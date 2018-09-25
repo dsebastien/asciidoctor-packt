@@ -109,8 +109,8 @@ IMPORTANT: In order to open FODT files on Fedora, you must have the **libreoffic
 * Because asciidoc considers double-underscores indicators of emphasis, all styles names are edited to replace __ with _ to avoid clashing
 
 ## TODO
+* add Docker support :)
 * annoying warning on Windows: Slim::Engine: Option :asciidoc is invalid
 * fix images
-  * position in FODT files. On my machine they don't appear next to the [[Insert image ...]] message 
   * images inlining is broken on Windows: Cannot read data. Most probably an encoding issue, but couldn't fix it so far
 * modify the template to use 01, 02, ... as chapter names and adapt corresponding folder names and examples in the .adoc files
