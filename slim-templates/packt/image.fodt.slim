@@ -1,5 +1,5 @@
 text:p text:style-name="imageblock" 
-  draw:frame draw:style-name="centeredimage" draw:name="image" text:anchor-type="paragraph" draw:z-index="1" svg:width=(attr :width) svg:height=(attr :height)
+  draw:frame draw:style-name="centeredimage" draw:name="image-#{attr :target}" text:anchor-type="paragraph" draw:z-index="0" style:rel-height="scale" svg:width=(attr :width) svg:height=(attr :height)
     / pointing to an external file works
     draw:image xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad" xlink:href=(attr :target)
     /draw:image xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad"

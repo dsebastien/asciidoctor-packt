@@ -17,7 +17,9 @@ Some of my modifications:
 * added a Gemfile and some info to ease the setup and config
 * added an AsciiDoctor file for variables, to be loaded in all chapters and avoid repetition
 * added a template for new chapters
-* tried to improve the image loading in fodt files because I had problems with this on Windows
+* tried to improve the image loading in fodt files because I had problems (on Windows)
+  * made them included rather than embedded
+  * enabled image height scaling (allows me to only define the width in the adoc files)
 * added inline footnotes support based on https://github.com/kubamarchwicki/asciidoctor-fodt
 
 As with the original repositories:
