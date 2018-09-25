@@ -1,15 +1,42 @@
-text:p text:style-name="imageblock" 
-  draw:frame draw:style-name="centeredimage" draw:name="image-#{attr :target}" text:anchor-type="paragraph" draw:z-index="0" style:rel-height="scale" svg:width=(attr :width) svg:height=(attr :height)
+/ References
+/ http://docs.oasis-open.org/office/v1.2/os/OpenDocument-v1.2-os-part1.html#element-draw_image
+/ http://docs.oasis-open.org/office/v1.2/os/OpenDocument-v1.2-os-part1.html#element-draw_frame
+/ http://docs.oasis-open.org/office/v1.2/os/OpenDocument-v1.2-os-part1.html#attribute-svg_width_element-draw_frame
+/ http://docs.oasis-open.org/office/v1.2/os/OpenDocument-v1.2-os-part1.html#attribute-svg_height_element-draw_frame
+/ http://docs.oasis-open.org/office/v1.2/os/OpenDocument-v1.2-os-part1.html#attribute-style_rel-width_element-draw_frame
+/ https://www.w3.org/TR/2001/REC-xsl-20011015/slice5.html#section-N8185-Definitions-of-Units-of-Measure
+
+/ Make sure the default encoding is not surprising
+- default_encoding = 'UTF-8'
+- Encoding.default_external = default_encoding
+- Encoding.default_internal = default_encoding
+
+/ Get image size information either from the attributes (default) or from the file itself
+- require 'image_size'
+- image_size = File.open((attr :target), 'rb'){ |fh| ImageSize.new(fh) }
+- image_width = attr(:width, image_size.width).to_f # convert to float for the calculations
+- image_height = attr(:height, image_size.height).to_f
+
+/- puts("Image width before scaling: #{image_width}");
+/- puts("Image height before scaling: #{image_height}");
+
+/ Resize the whole image if the scale attribute is defined
+- if attr?(:scale)
+  - scale = attr(:scale).to_f
+  - image_width = (image_width * scale).ceil
+  - image_height = (image_height * scale).ceil
+  /- puts("Image width after scaling: #{image_width}");
+  /- puts("Image height after scaling: #{image_height}");
+
+/ Render the image
+text:p text:style-name="imageblock"
+  draw:frame draw:style-name="centeredimage" draw:name="image-#{attr :target}" text:anchor-type="paragraph" draw:z-index="0" style:rel-height="scale" svg:width="#{image_width.to_s}px" svg:height="#{image_height.to_s}px"
     / pointing to an external file works
     draw:image xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad" xlink:href=(attr :target)
     /draw:image xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad"
     /  office:binary-data
     /    - require 'open-uri'
     /    - require 'base64'
-    /    - default_encoding = 'UTF-8'
-	/    / Make sure the default encoding is not surprising
-	/    - Encoding.default_external = default_encoding
-	/    - Encoding.default_internal = default_encoding
 	/    - image_file = open((attr :target), :encoding => "#{default_encoding}").read
     /    - enc = Base64.encode64(image_file) # encode in compliance with RFC 2045 as needed for draw:image: http://docs.oasis-open.org/office/v1.2/os/OpenDocument-v1.2-os-part1.html#__RefHeading__1415852_253892949
     /    =enc
