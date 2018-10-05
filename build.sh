@@ -28,8 +28,10 @@ clean_assets() {
 
 copy_assets() {
     echo "Copying the assets to the destination folder"
-    mkdir -p $DESTINATION_DIR/$ASSETS_DIR
-    cp -r ./$ASSETS_DIR $DESTINATION_DIR # copying the assets allows us to link to them easily
+    mkdir -p $DESTINATION_DIR/$ASSETS_DIR # copying the assets allows us to link to them easily
+    syncOptions=(--archive --delete --exclude="node_modules/" --exclude="dist/")
+    syncFiles $ASSETS_DIR $DESTINATION_DIR/$ASSETS_DIR/ "${syncOptions[@]}"
+    unset syncOptions
 }
 
 #####################################################################
