@@ -10,8 +10,7 @@ ASSETS_DIR=assets
 # TODO: Replace with your own title's designation
 TITLE="TITLE"
 
-# TODO: When you transition to 
-ROUND="1stdraft"
+MAX_ROUNDS=10 # Set this higher if you ever create more than 10 drafts (I hope you don't :p)
 
 # Load utilities
 source ./build-utils.sh
@@ -55,13 +54,28 @@ build() {
 
 	# Convert 1 into 01, 2 into 02, but leave index, foreword, etc. alone
 	case $1 in
-    	''|*[!0-9]*) 	CHAPTER_NUMBER=$1 ;;
-    	*) 				CHAPTER_NUMBER=$(echo 00$1 | tail -c 3) ;;
+    	''|*[!0-9]*) 	PART_NAME=$1 ;;
+    	*) 				PART_NAME=$(echo 00$1 | tail -c 3) ;;
 	esac
 
 	popd
 
-	DOC="${TITLE}_${CHAPTER_NUMBER}_${ROUND}"
+    DOC="UNDEFINED"
+    for draft_number in `seq ${MAX_ROUNDS} -1 1`
+	do
+		DOC="${TITLE}_${PART_NAME}_draft_${draft_number}"
+		if [ -e ${DOC}.adoc ]; then
+		    echo "Draft ${draft_number} detected for the following part: ${PART_NAME}. We will build that one!"
+		    break;
+        fi
+	done
+
+	if [ ! -f ${DOC}.adoc ]; then
+		echo "Document not found: ${DOC}. Is the modules.txt file correct? If the file name correct?"
+		echo "Fix that and try again, stopping the build"
+		exit;
+    fi
+
 
 	echo "Building ${DESTINATION_DIR}/${DOC}.html..."
 	asciidoctor --destination-dir ${DESTINATION_DIR} --attribute allow-uri-read ${DOC}.adoc

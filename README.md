@@ -23,6 +23,7 @@ Some of my modifications:
   * added logic to automatically set the image width and height based on the image dimensions (i.e., avoid grunt work)
   * added an attribute for scaling. Con: only works for fodt. Pro: easy and straightforward
 * added inline footnotes support based on https://github.com/kubamarchwicki/asciidoctor-fodt
+* added handling of multiple draft versions per individual chapter (e.g., round 2 for chapter 1, but still round 1 for chapter 2, ...)
 
 As with the original repositories:
 * there are no guarantees provided. If you take this on you assume ALL risk. You have been warned.
@@ -109,6 +110,7 @@ IMPORTANT: In order to open FODT files on Fedora, you must have the **libreoffic
 * Because asciidoc considers double-underscores indicators of emphasis, all styles names are edited to replace __ with _ to avoid clashing
 
 ## TODO
+* add support for generating the index.adoc file based on modules.txt
 * add Docker support :)
 * annoying warning on Windows: Slim::Engine: Option :asciidoc is invalid
 * fix images
