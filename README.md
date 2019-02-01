@@ -35,7 +35,7 @@ copyright notices.
 * Install [Ruby](https://www.ruby-lang.org)
 * Update your Ruby environment: `gem update --system && gem update *`
 * Install bundler with `gem install bundler` (https://bundler.io/)
-* Install the necessary Ruby dependencies with `gem bundle`
+* Install the necessary Ruby dependencies with `bundle install`
 * Install [Node.js](https://nodejs.org/en/) and npm (or Yarn if you fancy it better)
 * Run `npm install`
 * (optional) Install xmllint (http://www.zlatkovic.com/libxml.en.html). Binaries for Windows: ftp://ftp.zlatkovic.com/libxml/
