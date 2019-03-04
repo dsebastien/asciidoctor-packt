@@ -38,7 +38,9 @@ copyright notices.
 * Install the necessary Ruby dependencies with `bundle install`
 * Install [Node.js](https://nodejs.org/en/) and npm (or Yarn if you fancy it better)
 * Run `npm install`
-* (optional) Install xmllint (http://www.zlatkovic.com/libxml.en.html). Binaries for Windows: ftp://ftp.zlatkovic.com/libxml/
+* (optional) Install xmllint (http://www.zlatkovic.com/libxml.en.html)
+  * On Windows: ftp://ftp.zlatkovic.com/libxml/
+  * On Linux: `sudo apt-get install libxml2-utils`
 
 ## Usage
 
